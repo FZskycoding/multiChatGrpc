@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChatRoom from "./ChatRoom";
+import "./App.css";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -14,19 +15,21 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="app-container">
       {!entered ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <h2>請輸入您的名稱</h2>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="輸入名稱"
-          />
-          <button type="submit" style={{ marginLeft: "10px" }}>
-            送出
-          </button>
+          <div className="input-group">
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="輸入名稱"
+            />
+            <button type="submit">
+              送出
+            </button>
+          </div>
         </form>
       ) : (
         <ChatRoom username={username} />

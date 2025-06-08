@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ChatRoom.css";
 
 function ChatRoom({ username }) {
   const [ws, setWs] = useState(null);
@@ -42,48 +43,31 @@ function ChatRoom({ username }) {
   };
 
   return (
-    <div>
-      <h2>{username}的聊天室</h2>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          height: "300px",
-          overflowY: "scroll",
-          padding: "10px",
-        }}
-      >
+    <div className="chat-container">
+      <h2 className="chat-header">{username}的聊天室</h2>
+      <div className="messages-container">
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              margin: "10px 0",
-              padding: "5px",
-              backgroundColor: "#f5f5f5",
-              borderRadius: "5px",
-            }}
-          >
+          <div key={index} className="message-item">
             <strong>{msg.sender}</strong>
-            <span
-              style={{ color: "#666", fontSize: "0.8em", marginLeft: "10px" }}
-            >
+            <span className="message-timestamp">
               {new Date(msg.timestamp).toLocaleString()}
             </span>
-            <div style={{ marginTop: "5px" }}>{msg.text}</div>
+            <div className="message-text">{msg.text}</div>
           </div>
         ))}
       </div>
-      <div style={{ marginTop: "10px" }}>
+      <div className="input-container">
         <input
           type="text"
+          className="message-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
           placeholder="輸入訊息"
-          style={{ width: "70%", padding: "5px" }}
         />
         <button
+          className="send-button"
           onClick={sendMessage}
-          style={{ marginLeft: "10px", padding: "5px 10px" }}
         >
           送出訊息
         </button>
