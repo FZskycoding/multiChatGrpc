@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/MessageInput.css";
 
 function MessageInput({ onSend }) {
   const [text, setText] = useState("");
@@ -15,10 +16,10 @@ function MessageInput({ onSend }) {
   };
 
   return (
-    <div className="flex">
+    <div className="message-input-container">
       <input
         type="text"
-        className="flex-1 border p-2 rounded-l"
+        className="message-input"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyPress}
@@ -26,7 +27,7 @@ function MessageInput({ onSend }) {
       />
       <button
         onClick={handleSend}
-        className="bg-blue-500 text-white px-4 rounded-r"
+        className="send-button"
       >
         發送
       </button>

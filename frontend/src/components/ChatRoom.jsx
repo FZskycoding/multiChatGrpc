@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ChatRoom.css";
+import "../styles/ChatRoom.css";
 
 function ChatRoom({ username }) {
   const [ws, setWs] = useState(null);

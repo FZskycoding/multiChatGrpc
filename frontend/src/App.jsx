@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ChatRoom from "./ChatRoom";
+import ChatRoom from "./components/ChatRoom";
 import "./App.css";
 
 function App() {
