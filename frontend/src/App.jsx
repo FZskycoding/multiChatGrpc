@@ -18,7 +18,7 @@ function App() {
     <div className="app-container">
       {!entered ? (
         <form onSubmit={handleSubmit} className="login-form">
-          <h2>請輸入您的名稱</h2>
+          <h2>輸入您的名稱</h2>
           <div className="input-group">
             <input
               type="text"
@@ -27,7 +27,7 @@ function App() {
               placeholder="輸入名稱"
             />
             <button type="submit">
-              送出
+              加入聊天室
             </button>
           </div>
         </form>

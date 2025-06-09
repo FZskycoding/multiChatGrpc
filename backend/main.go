@@ -10,23 +10,23 @@ import (
 
 // 封裝訊息格式
 type Message struct {
-	Sender    string `json:"sender"`
-	Text      string `json:"text"`
-	Timestamp string `json:"timestamp"`
+	Sender    string `json:"sender"` //發送者的名稱
+	Text      string `json:"text"` //訊息內容
+	Timestamp string `json:"timestamp"` //時間標記
 }
 
 // WebSocket 升級器
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool {
-		return true // 允許跨來源請求（開發階段）
+		return true // 允許所有跨來源請求（開發階段）
 	},
 }
 
 // 所有連線的 client
-var clients = make(map[*websocket.Conn]bool)
-var broadcast = make(chan Message)
+var clients = make(map[*websocket.Conn]bool) //儲存所有連線中的使用者
+var broadcast = make(chan Message) //用來傳遞訊息給 handleMessages() 進行廣播
 
-// 處理 WebSocket 連線
+// 把 HTTP 連線升級為 WebSocket
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
@@ -55,7 +55,7 @@ func handleMessages() {
 	for {
 		msg := <-broadcast
 		for client := range clients {
-			err := client.WriteJSON(msg)
+			err := client.WriteJSON(msg) //使用 WriteJSON() 把 msg 傳給每一個使用者
 			if err != nil {
 				log.Printf("寫入錯誤: %v", err)
 				client.Close()
