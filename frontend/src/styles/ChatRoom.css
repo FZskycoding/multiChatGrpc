@@ -27,7 +27,7 @@
 }
 
 .message-item {
-  display: flex;
+  position: relative;
   margin: 8px 0;
   max-width: 70%;
 }
@@ -108,8 +108,22 @@
 }
 
 .message-timestamp {
+  position: absolute;
+  bottom: 0;
   font-size: 12px;
   color: gray;
+  white-space: nowrap;  /* 防止文字換行 */
+  min-width: max-content;  /* 確保容器寬度足夠容納內容 */
+}
+
+/* 自己的訊息時間戳（顯示在左側） */
+.own-message .message-timestamp {
+  right: calc(100% + 8px);  /* 放在泡泡左側 */
+}
+
+/* 其他人的訊息時間戳（顯示在右側） */
+.other-message .message-timestamp {
+  left: calc(100% + 8px);  /* 放在泡泡右側 */
 }
 
 .message-sender {
