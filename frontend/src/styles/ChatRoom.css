@@ -1,49 +1,45 @@
 .chat-container {
-  max-width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  background-color: #3d3a3a;
 }
 
 .chat-header {
-  margin-bottom: 1rem;
-  color: #333;
-  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #00b900;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .messages-container {
-  border: 1px solid #ccc;
-  height: 300px;
-  overflow-y: scroll;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .message-item {
-  margin: 10px 0;
-  padding: 8px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
+  display: flex;
+  margin: 8px 0;
+  max-width: 70%;
 }
 
 .message-item strong {
   color: #2c5282;
 }
 
-.message-timestamp {
-  color: #666;
-  font-size: 0.8em;
-  margin-left: 10px;
-}
-
-.message-text {
-  margin-top: 5px;
-  word-wrap: break-word;
-}
-
 .input-container {
   margin-top: 15px;
   display: flex;
-  gap: 10px;
+  gap: 2px;
 }
 
 .message-input {
@@ -73,4 +69,84 @@
 
 .send-button:hover {
   background-color: #3182ce;
+}
+
+.own-message {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.other-message {
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  padding: 10px 15px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.own-message .message-bubble {
+  background-color: #bff4a4;
+  border-bottom-right-radius: 0;
+  text-align: right;
+}
+
+.other-message .message-bubble {
+  background-color: #ffffff;
+  border-bottom-left-radius: 0;
+  text-align: left;
+}
+
+.message-text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.message-timestamp {
+  font-size: 12px;
+  color: gray;
+}
+
+.message-sender {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 3px;
+  margin-left: 10px;
+}
+
+/* 左邊的訊息（別人）泡泡箭頭 */
+.other-message .message-bubble::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  bottom: 10px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #ffffff; /* 同泡泡背景色 */
+}
+
+/* 右邊的訊息（自己）泡泡箭頭 */
+.own-message .message-bubble::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  bottom: 10px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #bff4a4; /* 同泡泡背景色 */
+}
+
+/* 為了讓箭頭對齊，要讓 bubble 是 relative */
+.message-bubble {
+  position: relative;
 }
