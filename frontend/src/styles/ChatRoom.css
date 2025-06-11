@@ -32,45 +32,6 @@
   max-width: 70%;
 }
 
-.message-item strong {
-  color: #2c5282;
-}
-
-.input-container {
-  margin-top: 15px;
-  display: flex;
-  gap: 2px;
-}
-
-.message-input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.message-input:focus {
-  outline: none;
-  border-color: #4a9eff;
-  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
-}
-
-.send-button {
-  padding: 8px 16px;
-  background-color: #4a9eff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s;
-}
-
-.send-button:hover {
-  background-color: #3182ce;
-}
-
 .own-message {
   align-self: flex-end;
   justify-content: flex-end;
@@ -82,7 +43,7 @@
 }
 
 .message-bubble {
-  padding: 10px 15px;
+  padding: 5px 15px;
   border-radius: 20px;
   position: relative;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -92,13 +53,11 @@
 
 .own-message .message-bubble {
   background-color: #bff4a4;
-  border-bottom-right-radius: 0;
   text-align: right;
 }
 
 .other-message .message-bubble {
   background-color: #ffffff;
-  border-bottom-left-radius: 0;
   text-align: left;
 }
 
@@ -134,33 +93,44 @@
   margin-left: 10px;
 }
 
-/* 左邊的訊息（別人）泡泡箭頭 */
-.other-message .message-bubble::after {
-  content: "";
-  position: absolute;
-  left: -8px;
-  bottom: 10px;
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 8px solid #ffffff; /* 同泡泡背景色 */
+
+
+.input-container {
+  margin: 10px;
+  display: flex;
+  
 }
 
-/* 右邊的訊息（自己）泡泡箭頭 */
-.own-message .message-bubble::after {
-  content: "";
-  position: absolute;
-  right: -8px;
-  bottom: 10px;
-  width: 0;
-  height: 0;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid #bff4a4; /* 同泡泡背景色 */
+/*輸入欄位 */
+.message-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
 }
 
-/* 為了讓箭頭對齊，要讓 bubble 是 relative */
-.message-bubble {
-  position: relative;
+.message-input:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.send-button {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.send-button:hover {
+  background-color: #3182ce;
 }
